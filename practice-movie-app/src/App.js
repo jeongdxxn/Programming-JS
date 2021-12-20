@@ -11,15 +11,31 @@ function App() {
 
   const onChange = (event) => setKeyword(event.target.value);
 
-  console.log('i run all the time');
+  //? useEffect : state를 변화시킬때 코드를 재실행
+  useEffect(() => {
+    console.log('I run only once');
+  }, []); // 한번만 실행
 
   useEffect(() => {
-    console.log('CALL THE API....');
-  }, []);
+    console.log('I run when "keyword" changes.');
+  }, [keyword]); // keyword가 변할 때마다 실행
+
+  useEffect(() => {
+    console.log('I run when "counter" changes.');
+  }, [counter]); // counter가 변할 때마다 실행
+
+  useEffect(() => {
+    console.log('I run when keyword & counter change');
+  }, [keyword, counter]) // keyword와 counter이 변할 때마다 실행
 
   return (
     <div>
-      <input value={keyword} onChange={onChange} type='text' placeholder='Search here...'/>
+      <input 
+        value={keyword} 
+        onChange={onChange} 
+        type='text' 
+        placeholder='Search here...'
+      />
       <h1>{counter}</h1>
       <button onClick={onClickUp}></button>
       <button onClick={onClickDown}></button>
