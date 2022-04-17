@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
 import styles from "./Home.module.css";
+import AnchorLink from "react-anchor-link-smooth-scroll-v2";
 
 function Home() {
   
@@ -42,25 +43,29 @@ function Home() {
 
   return (
     <div className={styles.container}>
+      <AnchorLink href="#things">
+        <div className={styles.menu}>클릭하면 이동</div>
+      </AnchorLink>
       {loading ? (
         <div className={styles.loader}>
           <span>Loading...</span>
-        </div>      
-        ) : (
+        </div>
+      ) : (
         <div className={styles.movies}>
           {movies.map((movie) => (
             <Movie
               key={movie.id}
-              id={movie.id}      
-              coverImg={movie.medium_cover_image} 
-              title={movie.title} 
-              summary={movie.summary} 
-              genres={movie.genres}/>
+              id={movie.id}
+              coverImg={movie.medium_cover_image}
+              title={movie.title}
+              summary={movie.summary}
+              genres={movie.genres}
+            />
           ))}
-        </div> 
+        </div>
       )}
     </div>
-  )
+  );
 }
 
 export default Home

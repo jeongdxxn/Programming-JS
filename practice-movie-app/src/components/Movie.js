@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './Movie.module.css';
 
 function Movie({ id, coverImg, title, year, summary, genres }) {
-  return  (
+  return (
     <div className={styles.movie}>
       <img src={coverImg} alt={title} className={styles.movie__img} />
       <div>
@@ -19,7 +19,7 @@ function Movie({ id, coverImg, title, year, summary, genres }) {
         </ul>
       </div>
     </div>
-  )
+  );
 }
 
 Movie.propTypes = {

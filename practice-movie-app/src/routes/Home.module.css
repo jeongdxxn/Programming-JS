@@ -22,6 +22,12 @@
   padding-top: 70px;
 }
 
+.menu {
+  border: 1px solid red;
+  width: 10vw;
+  padding: 20px;
+}
+
 @media screen and (max-width: 1090px) {
   .movies {
     grid-template-columns: 1fr;
