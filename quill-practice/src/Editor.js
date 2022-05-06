@@ -42,35 +42,46 @@ const options = [
 
 function Editor() {
   const [state, setState] = useState({ value: null });
+  const [color, setColor] = useState('');
   const handleChange = (value) => {
     setState({ value });
   };
 
-const customStyles = useMemo(
-  () => ({
-    option: (provided, state) => ({
-      ...provided,
-      border: "1px dotted black",
-      color: state.data.color,
-      opacity: 0.8,
-      padding: 20,
+  const customStyles = useMemo(
+    () => ({
+      option: (provided, state) => ({
+        ...provided,
+        color: state.data.color,
+        opacity: 0.8,
+        padding: 20,
+      }),
+      control: (provided) => ({
+        ...provided,
+        width: 500,
+        margin: 20,
+        // background: "red",
+      }),
+      singleValue: (provided, state) => ({
+        ...provided,
+        color: state.data.color,
+      }),
     }),
-    control: (provided) => ({
-      ...provided,
-      width: 500,
-      background: "red",
-    }),
-    singleValue: (provided, state) => ({
-      ...provided,
-      color: state.data.color,
-    }),
-  }),
-  []
-);
+    []
+  );
+
+  const selectChange = (e) => {
+    setColor(e.value);
+    console.log(e.value)
+  }
 
   return (
     <>
-      <Select options={options} styles={customStyles} />
+      <Select
+        options={options}
+        styles={customStyles}
+        onChange={(e) => selectChange(e)}
+      />
+      <div>선택한 색상 : {color}</div>
       <div className="editor">
         <div className="text-editor">
           {/* <QuillTollbar /> */}
